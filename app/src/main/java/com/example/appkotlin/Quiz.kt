@@ -9,7 +9,7 @@ data class Quiz(
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
-        parcel.createTypedArrayList(Question.CREATOR)!!
+        parcel.createTypedArrayList(Question.CREATOR)?.toList() ?: emptyList()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
